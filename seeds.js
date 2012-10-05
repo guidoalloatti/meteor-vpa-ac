@@ -1,27 +1,36 @@
-[{name:"Juan Peralta", aire: true},
-{name:"Diegote", aire: true},
-{name:"Dani Molinet", aire: true},
-{name:"Nico Heredia", aire: true},
-{name:"Eve", aire: true},
-{name:"Gisela Vivas La Patria", aire: true},
-{name:"Paula Herrero", aire: true},
-{name:"Dani Rodriguez", aire: true},
-{name:"Martin Pelado", aire: true},
-{name:"Juan Manuel", aire: true},
-{name:"Silvina", aire: true},
-{name:"Leo Tioni", aire: true},
-{name:"Guido", aire: true},
-{name:"Tate", aire: true},
-{name:"Andy", aire: true},
-{name:"Cacu", aire: true},
-{name:"Mati Crespo", aire: true},
-{name:"Pato", aire: true},
-{name:"Rodrigo Fuentes", aire: true},
-{name:"Gonzo", aire: true},
-{name:"Leo Elias", aire: true},
-{name:"Nico Rodas", aire: true},
-{name:"Mati (de Kinsser)", aire: true},
-{name:"March", aire: true},
-{name:"NaN", aire: true},
-{name:"Seba", aire: true},
-{name:"Bruno", aire: true}]
+Meteor.startup(function(){
+	if(Users.find().count() === 0) {
+		people = [{name:"JuanCa", aire: true},
+				{name:"Diegote", aire: true},
+				{name:"DaniM", aire: true},
+				{name:"NicoH", aire: true},
+				{name:"Eve", aire: true},
+				{name:"Gisela", aire: true},
+				{name:"Paula", aire: true},
+				{name:"DaniR", aire: true},
+				{name:"MartinL", aire: true},
+				{name:"Juan Manuel", aire: true},
+				{name:"Silvina", aire: true},
+				{name:"LeoT", aire: true},
+				{name:"Guido", aire: true},
+				{name:"Tate", aire: true},
+				{name:"Andy", aire: true},
+				{name:"Cacu", aire: true},
+				{name:"Mati", aire: true},
+				{name:"Pato", aire: true},
+				{name:"Rodri", aire: true},
+				{name:"Gonzo", aire: true},
+				{name:"Leo E", aire: true},
+				{name:"NicoRT", aire: true},
+				{name:"Mati C", aire: true},
+				{name:"March", aire: true},
+				{name:"NaN", aire: true},
+				{name:"Seba", aire: true},
+				{name:"Bruno", aire: true}];
+		
+		for( i=0; i< 1; i++){
+			Users.insert({name: people[5].name, aire: true });
+			console.log('User fill' + i);
+		}
+	}
+})	

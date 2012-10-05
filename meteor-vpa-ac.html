@@ -3,7 +3,7 @@
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title>Your Page Title Here :)</title>
+	<title>Air Conditioner?</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -31,9 +31,9 @@
 </head>
 <body>
 	<div class="container">
+  		<h1>Prendemos el aire acondicionado?</h1>
 		 	{{> user_list}}
   
-  {{> hello}}
 	</div><!-- container -->
 
 
@@ -44,11 +44,10 @@
 
 <template name="user_list">
 	{{#each users}}
-	<br />
-	<label> {{this.name}}</label>
-  	<input class="check" type="checkbox" name="{{this.name}}" {{#if this.aire}}checked="checked"{{/if}}/>
-		
-
+	<label> 
+  		<input class="check" type="checkbox" name="{{this.name}}" {{#if this.aire}}checked="checked"{{/if}}/>
+  		<span>{{this.name}}</span>
+	</label>
 	{{else}}
 	{{/each}}
 </template>
