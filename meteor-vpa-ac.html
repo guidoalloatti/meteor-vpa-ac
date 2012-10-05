@@ -3,8 +3,23 @@
 </head>
 
 <body>
+
+	{{> user_list}}
+  
   {{> hello}}
 </body>
+
+<template name="user_list">
+	{{#each users}}
+	<br />
+	<label> {{this.name}}</label>
+  	<input class="check" type="checkbox" name="{{this.name}}" {{#if this.aire}}checked="checked"{{/if}}/>
+		
+
+	{{else}}
+	{{/each}}
+</template>
+
 
 <template name="hello">
   <h1>Hello World!</h1>
