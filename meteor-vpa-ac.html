@@ -11,30 +11,23 @@
   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-  ================================================== -->
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
-
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-
 </head>
 <body>
-	<h1>Prendemos el aire acondicionado?</h1>
 	<div class="container">
+		<div class="twelve columns">
+			<h1>¿Prendemos el aire?</h1>
+		</div>
+	
+		<div class="seven columns">
+			<h3>Votación</h3>
 		 	{{> user_list}}
-  
-	</div><!-- container -->
+		</div>
+
+	  	<div class="five columns">
+	  		<h3>Resultados</h3>
+	  		{{> results}}
+	  	</div>
+	</div>
 
 
 <!-- End Document
@@ -50,4 +43,23 @@
 	</label>
 	{{else}}
 	{{/each}}
+</template>
+
+<template name="results">
+	<ul>
+		<li>Con aire: {{aire_count}}</li>
+		<li>Sin aire: {{sin_aire_count}}</li>
+	</ul>
+
+	<span>
+		{{#if aire_wins}}
+			Se prende el aire!!
+		{{else}}
+			{{#if aire_loses}}
+				El aire pierde!!
+			{{else}}
+				Empate... se prende el aire!!
+			{{/if}}
+		{{/if}}
+	</span>
 </template>

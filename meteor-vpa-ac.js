@@ -15,6 +15,21 @@ if (Meteor.isClient) {
         //console.log(this); 
     }
   });
+
+  Template.results.aire_count = function(){
+    return Users.find({aire: true}).count();
+  };
+
+  Template.results.sin_aire_count = function(){
+    return Users.find({aire: false}).count();
+  };
+
+  Template.results.aire_wins = function(){
+    return(Template.results.aire_count() > Template.results.sin_aire_count());
+  } 
+  Template.results.aire_loses = function(){
+    return(Template.results.aire_count() < Template.results.sin_aire_count());
+  }
 }
 
 if (Meteor.isServer) {
