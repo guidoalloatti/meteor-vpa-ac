@@ -2,7 +2,7 @@ Users = new Meteor.Collection('users');
 
 if (Meteor.isClient) {
   Template.user_list.users = function () {
-    return Users.find({});
+    return Users.find({},{sort: {name: 1}});
   }
 
   Template.user_list.events({

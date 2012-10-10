@@ -1,0 +1,15 @@
+.win{
+	padding: 6px;
+	border: 1px green solid;
+	font-size:2em;
+	color: green;
+	font-weight: bold;
+}
+
+.lose{
+	padding: 6px;
+	border: 1px red solid;
+	font-size:2em;
+	color: red;
+	font-style: italic;	
+}
