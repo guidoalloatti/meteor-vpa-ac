@@ -51,12 +51,12 @@
 		<li>Sin aire: {{sin_aire_count}}</li>
 	</ul>
 
-	<span>
+	
 		{{#if aire_wins}}
-			Se prende el aire!!
+			<div class='win'>Se prende el aire!!</div>
 		{{else}}
 			{{#if aire_loses}}
-				El aire pierde!!
+				<div class='lose'>El aire pierde!! =(</div>
 			{{else}}
 				Empate... se prende el aire!!
 			{{/if}}
