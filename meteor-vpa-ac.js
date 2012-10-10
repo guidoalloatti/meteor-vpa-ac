@@ -8,13 +8,43 @@ if (Meteor.isClient) {
   Template.user_list.events({
     'click .check' : function () {
       // template data, if any, is available in 'this'
-      //console.log(this._id, this.aire);
-      Users.update(this._id, {$set: {aire: !this.aire}});
-      //if (typeof console !== 'undefined')
-        //console.log("click", this.name);
-        //console.log(this); 
+
+       var value = null;
+      if (event.target.value == "true"){
+        value = true;
+      }else if(event.target.value == "false"){
+        value = false
+      }
+      Users.update(this._id, {$set: {aire: value}});
     }
   });
+
+  Handlebars.registerHelper('if_aire_on', function (aire,options){
+     if (aire == true){
+      return options.fn(this);
+    } else if(aire == false){
+      return options.inverse(this);
+    }
+  });
+  Handlebars.registerHelper('if_aire_off', function (aire,options){
+    
+     if (aire == false){
+      return options.fn(this);
+    } else if(aire == true) {
+      return options.inverse(this);
+    }
+  });
+
+  Handlebars.registerHelper('if_aire_null', function (aire,options){
+    
+     if (aire == null){
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+
+
 
   Template.results.aire_count = function(){
     return Users.find({aire: true}).count();
@@ -35,37 +65,37 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
     Meteor.startup(function () {
       if(Users.find().count() === 0) {
-        people = [{name:"JuanCa", aire: true},
-          {name:"Diegote", aire: true},
-          {name:"DaniM", aire: true},
-          {name:"NicoH", aire: true},
-          {name:"Eve", aire: true},
-          {name:"Gisela", aire: true},
-          {name:"Paula", aire: true},
-          {name:"DaniR", aire: true},
-          {name:"MartinL", aire: true},
-          {name:"Juan Manuel", aire: true},
-          {name:"Silvina", aire: true},
-          {name:"LeoT", aire: true},
-          {name:"Guido", aire: true},
-          {name:"Tate", aire: true},
-          {name:"Andy", aire: true},
-          {name:"Cacu", aire: true},
-          {name:"Mati", aire: true},
-          {name:"Pato", aire: true},
-          {name:"Rodri", aire: true},
-          {name:"Gonzo", aire: true},
-          {name:"Leo E", aire: true},
-          {name:"NicoRT", aire: true},
-          {name:"Mati C", aire: true},
-          {name:"March", aire: true},
-          {name:"NaN", aire: true},
-          {name:"Seba", aire: true},
-          {name:"Bruno", aire: true}
+        people = [{name:"JuanCa", aire: null},
+          {name:"Diegote", aire: null},
+          {name:"DaniM", aire: null},
+          {name:"NicoH", aire: null},
+          {name:"Eve", aire: null},
+          {name:"Gisela", aire: null},
+          {name:"Paula", aire: null},
+          {name:"DaniR", aire: null},
+          {name:"MartinL", aire: null},
+          {name:"Juan Manuel", aire: null},
+          {name:"Silvina", aire: null},
+          {name:"LeoT", aire: null},
+          {name:"Guido", aire: null},
+          {name:"Tate", aire: null},
+          {name:"Andy", aire: null},
+          {name:"Cacu", aire: null},
+          {name:"Mati", aire: null},
+          {name:"Pato", aire: null},
+          {name:"Rodri", aire: null},
+          {name:"Gonzo", aire: null},
+          {name:"Leo E", aire: null},
+          {name:"NicoRT", aire: null},
+          {name:"Mati C", aire: null},
+          {name:"March", aire: null},
+          {name:"NaN", aire: null},
+          {name:"Seba", aire: null},
+          {name:"Bruno", aire: null}
           ];
       
         for( i=0; i< people.length; i++){
-          Users.insert({name: people[i].name, aire: true });
+          Users.insert({name: people[i].name, aire:  people[i].aire });
           console.log('User fill' + i);
         }
       }
